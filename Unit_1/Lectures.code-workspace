@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"name": "Lectures",
+			"path": "../Lectures"
+		},
+		{
+			"name": "Unit_1",
+			"path": "."
+		},
+		{
+			"name": "hello-html",
+			"path": "../../Desktop/PTSB_Jan_2023/Labs/hello-html"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "hello-html"
+	}
+}
