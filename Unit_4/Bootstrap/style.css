@@ -21,6 +21,10 @@ body {
     align-items: center;
 }
 
+.card {
+    text-align: center;
+}
+
 /* Display Cards */
 #kept-cards {
     margin: 2rem 2rem;

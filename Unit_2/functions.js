@@ -94,9 +94,8 @@ printArray();
 
 function greet (title) {
     console.log(`Hey there, ${title}`);
-    console.log(title); // shows the value
+    // console.log(title);
 }
-
 // console.log(title); //Results in not found error, title only used in function code block
 greet(); // Undefined wasn't given a value "Hey there, undefined"
 
