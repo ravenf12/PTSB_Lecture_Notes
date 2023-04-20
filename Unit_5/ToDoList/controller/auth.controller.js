@@ -10,6 +10,7 @@ router.post("/register", (req, res) => {
     // console.log("body/content of Req:", req.body);
 
     try {
+        //  Dive into the req body and assign values to variables, object destructurin
     const { firstName, lastName, email, password } = req.body;
 
     console.log(potato); // Only here to test and trigger catch response 
@@ -21,10 +22,10 @@ router.post("/register", (req, res) => {
         date: req.datePosted,
     });
 } catch (err) {
-    res.status(500).send(
-        `<img src="https://http.cat/500" alt="Status code 500"/> `
-    )
-    }
+    res
+      .status(500)
+      .send(`<img src="https://http.cat/500" alt="Status code 500"/> `);
+  }
 });
 
 module.exports = router;

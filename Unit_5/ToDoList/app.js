@@ -9,6 +9,8 @@ const PORT = 4000;
 // --------------------- Required File Paths -------------------------
 // Create a variable that imports the practice controller (gives app.js access to it)
 const practiceController = require("./controller/practice.controller");
+const auth = require("./controller/auth.controller");
+const routes = require("./controller/routes.controller");
 // Require in the index.js from helpers(./helpers) w/ object destructuring
 const { logTime } = require("./helpers");
 
@@ -20,6 +22,7 @@ app.use(logTime);
 // call on our app var, use the .use() method to tell our app: express.json() (use JSON please express)
 app.use(express.json());
 
+app.use(express.urlencoded());
 // Use a method called .use(), this points our express app to where it should go
 // Call the app var, use the .use() method, specify using express to target the public folder, note: when a file is not specified, JS always defaults to seeking an index file.
 // __dirname comes from node (it's accessible whenever)
@@ -33,6 +36,10 @@ console.log("pathway: ", __dirname); // route us to the public folder
     ex: localhost:4000/practice
 */
 app.use("/practice", practiceController);
+// Building route to auth controller: http://localhost:4000/todo
+app.use("./todo", auth);
+
+app.use("/routes", routes);
 
 // Create a method that "listens" for us spinning up/starting our application.
 // This will need our PORT # and a callback function
@@ -41,4 +48,14 @@ app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
 });
 
+fs.readFile("./helpers/db.json", (err, data) => {
+  if (err) throw err;
+
+  const db = JSON.parse(data);
+
+  db.push(toDoItem);
+
+  fs.writeFile("./helpers/db.json", JSON.stringify(db), (err) => console.log(err)
+  );
+});
 // To start server, in terminal at the project directory(the folder) run command "nodemon"
